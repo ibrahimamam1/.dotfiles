@@ -1,0 +1,123 @@
+---
+whiskers:
+  version: 2.1.0
+  matrix:
+    - flavor
+  filename: 'sass-palette-{{ flavor.identifier }}.patch'
+---
+{%- set palette = flavor.colors -%}
+diff --git a/src/sass/_color-palette-catppuccin-{{ flavor.identifier }}.scss b/src/sass/_color-palette-catppuccin-{{ flavor.identifier }}.scss
+new file mode 100644
+index 00000000..4ff0da0d
+--- /dev/null
++++ b/src/sass/_color-palette-catppuccin-{{ flavor.identifier }}.scss
+@@ -0,0 +1,87 @@
++ // Our accents
++ $rosewater: #{{ palette.rosewater.hex }};
++ $flamingo: #{{ palette.flamingo.hex }};
++ $pink: #{{ palette.pink.hex }};
++ $mauve: #{{ palette.mauve.hex }};
++ $red: #{{ palette.red.hex }};
++ $maroon: #{{ palette.maroon.hex }};
++ $peach: #{{ palette.peach.hex }};
++ $yellow: #{{ palette.yellow.hex }};
++ $green: #{{ palette.green.hex }};
++ $teal: #{{ palette.teal.hex }};
++ $sky: #{{ palette.sky.hex }};
++ $sapphire: #{{ palette.sapphire.hex }};
++ $blue: #{{ palette.blue.hex }};
++ $lavender: #{{ palette.lavender.hex }};
++// Default Theme Color Palette
++
++// Red
++$red-light: #{{ palette.red.hex }};
++$red-dark: #{{ palette.red.hex }};
++
++// Pink
++$pink-light: #{{ palette.pink.hex }};
++$pink-dark: #{{ palette.pink.hex }};
++
++// Purple
++$purple-light: #{{ palette.mauve.hex }};
++$purple-dark: #{{ palette.mauve.hex }};
++
++// Blue
++$blue-light: #{{ palette.blue.hex }};
++$blue-dark: #{{ palette.blue.hex }};
++
++// Teal
++$teal-light: #{{ palette.teal.hex }};
++$teal-dark: #{{ palette.teal.hex }};
++
++// Green
++$green-light: #{{ palette.green.hex }};
++$green-dark: #{{ palette.green.hex }};
++
++// Yellow
++$yellow-light: #{{ palette.yellow.hex }};
++$yellow-dark: #{{ palette.yellow.hex }};
++
++// Orange
++$orange-light: #{{ palette.peach.hex }};
++$orange-dark: #{{ palette.peach.hex }};
++
++// Grey
+{% if flavor.dark -%}  {#- https://github.com/catppuccin/gtk/blob/0c3e8817da94769887c690b2211e006b287b27b1/scripts/recolor.py#L153-L176 -#}
++$grey-050: #{{ palette.overlay2.hex }};
++$grey-100: #{{ palette.overlay1.hex }};
++$grey-150: #{{ palette.overlay0.hex }};
++$grey-200: #{{ palette.surface2.hex }};
++$grey-250: #{{ palette.surface1.hex }};
++$grey-300: red;
++$grey-350: red;
++$grey-400: red;
++$grey-450: red;
++$grey-500: red;
++$grey-550: red;
++$grey-600: red;
++$grey-650: #{{ palette.surface0.hex }};
++$grey-700: #{{ palette.base.hex }};
++$grey-750: #{{ palette.mantle.hex }};
++$grey-800: #{{ palette.crust.hex }};
++$grey-850: #020202;
++$grey-900: #010101;
++$grey-950: #000000;
+{%- else -%} {#- Light mode https://github.com/catppuccin/gtk/blob/0c3e8817da94769887c690b2211e006b287b27b1/scripts/recolor.py#L128-L151 -#}
++$grey-050: #{{ palette.crust.hex }};
++$grey-100: #{{ palette.mantle.hex }};
++$grey-150: #{{ palette.base.hex }};
++$grey-200: #{{ palette.surface0.hex }};
++$grey-250: #{{ palette.surface1.hex }};
++$grey-300: red;
++$grey-350: red;
++$grey-400: red;
++$grey-450: red;
++$grey-500: red;
++$grey-550: red;
++$grey-600: red;
++$grey-650: #{{ palette.base.hex }};
++$grey-700: #{{ palette.base.hex }};
++$grey-750: #{{ palette.mantle.hex }};
++$grey-800: #{{ palette.text.hex }};
++$grey-850: #020202;
++$grey-900: #010101;
++$grey-950: #000000;
+{%- endif %}
++
++// White
++$white: #eff1f5;
++
++// Black
++$black: #11111b;
++
++// Button
++$button-close: #{{ palette.red.hex }};
++$button-max: #{{ palette.green.hex }};
++$button-min: #{{ palette.yellow.hex }};
++
++// Link
++$links: #{{ palette.sky.hex }};
++
++// Theme
++$default-light: $purple-light;
++$default-dark: $purple-dark;

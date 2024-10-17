@@ -1,0 +1,93 @@
+diff --git a/src/sass/_color-palette-catppuccin-macchiato.scss b/src/sass/_color-palette-catppuccin-macchiato.scss
+new file mode 100644
+index 00000000..4ff0da0d
+--- /dev/null
++++ b/src/sass/_color-palette-catppuccin-macchiato.scss
+@@ -0,0 +1,87 @@
++ // Our accents
++ $rosewater: #f4dbd6;
++ $flamingo: #f0c6c6;
++ $pink: #f5bde6;
++ $mauve: #c6a0f6;
++ $red: #ed8796;
++ $maroon: #ee99a0;
++ $peach: #f5a97f;
++ $yellow: #eed49f;
++ $green: #a6da95;
++ $teal: #8bd5ca;
++ $sky: #91d7e3;
++ $sapphire: #7dc4e4;
++ $blue: #8aadf4;
++ $lavender: #b7bdf8;
++// Default Theme Color Palette
++
++// Red
++$red-light: #ed8796;
++$red-dark: #ed8796;
++
++// Pink
++$pink-light: #f5bde6;
++$pink-dark: #f5bde6;
++
++// Purple
++$purple-light: #c6a0f6;
++$purple-dark: #c6a0f6;
++
++// Blue
++$blue-light: #8aadf4;
++$blue-dark: #8aadf4;
++
++// Teal
++$teal-light: #8bd5ca;
++$teal-dark: #8bd5ca;
++
++// Green
++$green-light: #a6da95;
++$green-dark: #a6da95;
++
++// Yellow
++$yellow-light: #eed49f;
++$yellow-dark: #eed49f;
++
++// Orange
++$orange-light: #f5a97f;
++$orange-dark: #f5a97f;
++
++// Grey
++$grey-050: #939ab7;
++$grey-100: #8087a2;
++$grey-150: #6e738d;
++$grey-200: #5b6078;
++$grey-250: #494d64;
++$grey-300: red;
++$grey-350: red;
++$grey-400: red;
++$grey-450: red;
++$grey-500: red;
++$grey-550: red;
++$grey-600: red;
++$grey-650: #363a4f;
++$grey-700: #24273a;
++$grey-750: #1e2030;
++$grey-800: #181926;
++$grey-850: #020202;
++$grey-900: #010101;
++$grey-950: #000000;
++
++// White
++$white: #eff1f5;
++
++// Black
++$black: #11111b;
++
++// Button
++$button-close: #ed8796;
++$button-max: #a6da95;
++$button-min: #eed49f;
++
++// Link
++$links: #91d7e3;
++
++// Theme
++$default-light: $purple-light;
++$default-dark: $purple-dark;
