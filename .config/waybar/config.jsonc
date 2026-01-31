@@ -22,6 +22,7 @@
         "network",
         "cpu",
         "memory",
+        "custom/gpu",
         "pulseaudio",
         "backlight",
         "custom/notifications",
@@ -42,24 +43,31 @@
         // "format": "{icon} {name}",
         "format": "",
         "format-icons": {
-            "active": "",
-            "default": ""
+            "active": "",
+            "default": ""
         },
         "on-scroll-up": "hyprctl dispatch workspace e-1",
         "on-scroll-down": "hyprctl dispatch workspace e+1",
         "on-click": "activate"
     },
     "cpu": {
-        "format": " {usage}%",
+        "format": "󰍛 {usage}%",
         "tooltip": true,
         "on-click": "kitty --start-as=fullscreen --title all_is_kitty sh -c 'btop'",
         "interval": 2
     },
     "memory": {
-        "format": " {}%",
+        "format": "󰘚 {}%",
         "tooltip": true,
         "on-click": "kitty --start-as=fullscreen --title all_is_kitty sh -c 'btop'",
         "interval": 2
+    },
+    "custom/gpu": {
+        "format": "󰢮 {}%",
+        "exec": "cat /sys/class/drm/card0/device/gpu_busy_percent 2>/dev/null || echo 'N/A'",
+        "interval": 2,
+        "tooltip": true,
+/bin/bash: line 1: :wqa: command not found
     },
     "temperature": {
         // "thermal-zone": 2,
@@ -68,16 +76,16 @@
         "format-critical": "{icon} {temperatureC}°C",
         "format": "{icon} {temperatureC}°C",
         "format-icons": [
-            "",
-            "",
-            ""
+            "",
+            "",
+            ""
         ],
         "tooltip": true,
         "on-click": "kitty --start-as=fullscreen --title all_is_kitty sh -c 'btop'",
         "interval": 2
     },
     "disk": {
-        "format": " {percentage_used}% ({free})",
+        "format": " {percentage_used}% ({free})",
         "tooltip": true,
         "on-click": "kitty --start-as=fullscreen --title all_is_kitty sh -c 'btop'",
         "interval": 2
@@ -94,8 +102,8 @@
     "custom/music": {
         "format": "{icon}{0}",
         "format-icons": {
-            // "Playing": " ", // Uncomment if not using the dynamic script
-            "Paused": " ",
+            // "Playing": " ", // Uncomment if not using the dynamic script
+            "Paused": " ",
             "Stopped": "&#x202d;ﭥ " // This stop symbol is RTL. So &#x202d; is left-to-right override.
         },
         "escape": true,
@@ -117,19 +125,19 @@
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format": "↕{bandwidthTotalBytes}",
         "format-disconnected": "{icon} No Internet",
-        "format-linked": " {ifname} (No IP)",
+        "format-linked": " {ifname} (No IP)",
         "format-alt": "↕{bandwidthUpBytes} | ↕{bandwidthDownBytes}",
-        "tooltip-format": "{ifname}: {ipaddr}/{cidr}  {gwaddr}",
+        "tooltip-format": "{ifname}: {ipaddr}/{cidr}  {gwaddr}",
         "tooltip-format-wifi": "{icon} {essid} ({signalStrength}%)",
         "tooltip-format-ethernet": "{icon} {ipaddr}/{cidr}",
         "tooltip-format-disconnected": "{icon} Disconnected",
         "on-click-right": "nm-connection-editor",
         "format-icons": {
-            "ethernet": "",
+            "ethernet": "",
             "disconnected": "⚠",
             "wifi": [
-                "睊",
-                "直"
+                "睊",
+                "直"
             ]
         },
         "interval": 2
@@ -138,20 +146,20 @@
         // "scroll-step": 1, // %, can be a float
         "format": "{icon} {volume}%", // {format_source}
         "format-bluetooth": "{icon} {volume}%", // {format_source}
-        "format-bluetooth-muted": "", // {format_source}
-        "format-muted": "", // {format_source}
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
+        "format-bluetooth-muted": "", // {format_source}
+        "format-muted": "", // {format_source}
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
         "format-icons": {
-            "headphone": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": " ",
+            "headphone": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": " ",
             "default": [
-                "",
-                "",
-                ""
+                "",
+                "",
+                ""
             ]
         },
         "on-click": "pavucontrol"
@@ -160,15 +168,15 @@
         // "device": "acpi_video1",
         "format": "{icon} {percent}%",
         "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
         ],
         "on-scroll-up": "light -A 1",
         "on-scroll-down": "light -U 1",
@@ -178,10 +186,10 @@
         "tooltip": false,
         "format": "{icon}",
         "format-icons": {
-            "notification": "<span foreground='red'><sup></sup></span>",
-            "none": "",
-            "dnd-notification": "<span foreground='red'><sup></sup></span>",
-            "dnd-none": ""
+            "notification": "<span foreground='red'><sup></sup></span>",
+            "none": "",
+            "dnd-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-none": ""
         },
         "return-type": "json",
         "exec-if": "which swaync-client",
@@ -196,9 +204,9 @@
     },
     "clock": {
         "timezone": "Asia/Dhaka",
-        "format": " {:%d <small>%a</small> %H:%M}",
-        //"format": " {:%a %b %d %Y | %H:%M}",
-        "format-alt": " {:%A %B %d %Y (%V) | %r}",
+        "format": " {:%d <small>%a</small> %H:%M}",
+        //"format": " {:%a %b %d %Y | %H:%M}",
+        "format-alt": " {:%A %B %d %Y (%V) | %r}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "calendar-weeks-pos": "right",
         "today-format": "<span color='#f38ba8'><b><u>{}</u></b></span>",
@@ -210,8 +218,8 @@
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "",
-            "deactivated": ""
+            "activated": "",
+            "deactivated": ""
         }
     },
     "custom/weather": {
