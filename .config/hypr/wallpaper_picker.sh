@@ -1,18 +1,18 @@
 #!/bin/bash
-
 # Directory containing wallpapers
 WALLPAPER_DIR="$HOME/Pictures/wallpapers"
 
 # Get a random wallpaper file
 WALLPAPER=$(find "$WALLPAPER_DIR" -type f | shuf -n 1)
 
-# Update hyprpaper.conf
-echo "preload = $WALLPAPER" > "$HOME/.config/hypr/hyprpaper.conf"
-echo "wallpaper = ,${WALLPAPER}" >> "$HOME/.config/hypr/hyprpaper.conf"
+# Kill any existing hyprpaper
+pkill hyprpaper
+sleep 0.5
 
-# Restart hyprpaper (if it's running)
-if pgrep -x "hyprpaper" > /dev/null
-then
-    killall hyprpaper
-    hyprpaper &
-fi
+# Start hyprpaper in background
+hyprpaper &
+sleep 0.5
+
+# Load and set wallpaper using hyprctl
+hyprctl hyprpaper preload "$WALLPAPER"
+hyprctl hyprpaper wallpaper "HDMI-A-6,$WALLPAPER"
